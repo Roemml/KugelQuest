@@ -1,13 +1,16 @@
 import pygame
 # import pygame._sdl2.controller
 import logging
+import sys
 import os
 import sprites
 import Kugel
-
-GAME_DIR = os.path.join(".", "")
-if not "data" in os.listdir(GAME_DIR):
-    GAME_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "")
+if getattr(sys, 'frozen', False):  # wenn mit PyInstaller "eingefroren"
+    # sys.executable ist dann die .exe-Datei
+    GAME_DIR = os.path.dirname(sys.executable)
+else:
+    # normale Python-Ausführung: Skriptdatei
+    GAME_DIR= os.path.dirname(os.path.abspath(__file__))
 DATA_DIR:str = os.path.join(GAME_DIR, "data", "")
 SCREEN_WIDTH:int = 1200 # Breite des Spiel Fensters
 SCREEN_HEIGHT:int = 900 # Höhe des Spiel Fensters
