@@ -24,9 +24,10 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_icon(pygame.image.load(f"{DATA_DIR}Kugel.png"))
     pygame.display.set_caption("KugelQuest")
-    pygame.display.toggle_fullscreen()
+    # pygame.display.toggle_fullscreen()
     # pygame.init()
     # pygame._sdl2.controller.init()
+    timer = pygame.time.Clock()
     ende = False
     sprites.active_sprites.add(Kugel.Kugel(), layer=sprites.LAYER_KUGEL
                        )
@@ -42,4 +43,5 @@ if __name__ == "__main__":
         screen.fill((125, 125, 125))
         sprites.active_sprites.draw(screen)
         pygame.display.flip()
+        timer.tick(60)
     logging.debug("Ende!")
