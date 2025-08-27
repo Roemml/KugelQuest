@@ -3,14 +3,10 @@ import pygame
 import logging
 import sys
 import os
+import Roemdules.utils as rd_utils
 import sprites
 import Kugel
-if getattr(sys, 'frozen', False):  # wenn mit PyInstaller "eingefroren"
-    # sys.executable ist dann die .exe-Datei
-    GAME_DIR = os.path.dirname(sys.executable)
-else:
-    # normale Python-Ausführung: Skriptdatei
-    GAME_DIR= os.path.dirname(os.path.abspath(__file__))
+GAME_DIR = rd_utils.get_exepath(__file__)
 DATA_DIR:str = os.path.join(GAME_DIR, "data", "")
 SCREEN_WIDTH:int = 1200 # Breite des Spiel Fensters
 SCREEN_HEIGHT:int = 900 # Höhe des Spiel Fensters
