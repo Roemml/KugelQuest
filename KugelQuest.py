@@ -5,7 +5,8 @@ import sys
 import os
 import Roemdules.utils as rd_utils
 import sprites
-import Kugel
+import screens
+import kugel
 GAME_DIR = rd_utils.get_exepath(__file__)
 DATA_DIR:str = os.path.join(GAME_DIR, "data", "")
 SCREEN_WIDTH:int = 1200 # Breite des Spiel Fensters
@@ -25,8 +26,8 @@ if __name__ == "__main__":
     # pygame._sdl2.controller.init()
     timer = pygame.time.Clock()
     ende = False
-    sprites.active_sprites.add(Kugel.Kugel(), layer=sprites.LAYER_KUGEL
-                       )
+    sprites.active_sprites.add(kugel.Kugel(), layer=sprites.LAYER_KUGEL)
+    sprites.active_sprites.add(screens.Hintergrund(), layer=sprites.LAYER_HG)
     while ende == False:
         events = pygame.event.get()
         keys = pygame.key.get_pressed()

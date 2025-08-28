@@ -26,6 +26,7 @@ class Kugel(pygame.sprite.Sprite):
 		self.image = self.image_0
 		self.rect = self.image_0.get_rect()
 		self.rect.center = (KugelQuest.SCREEN_WIDTH/2,KugelQuest.SCREEN_HEIGHT/2)
+		self.speed = 5
 		#self._layer = sprites.LAYER_KUGEL
 	def update(self):
 		keys = pygame.key.get_pressed()
@@ -51,10 +52,14 @@ class Kugel(pygame.sprite.Sprite):
 				bewegung = "d"
 		self.image = eval(f"self.image_{bewegung}")
 		if 'l' in bewegung:
-			if self.rect.left > 5: self.rect.left -=5
+			if self.rect.left > self.speed: 
+				self.rect.left -= self.speed
 		if 'r' in bewegung:
-			if self.rect.right < KugelQuest.SCREEN_WIDTH - 5: self.rect.left +=5
+			if self.rect.right < KugelQuest.SCREEN_WIDTH - self.speed: 
+				self.rect.left += self.speed
 		if 'u' in bewegung:
-			if self.rect.top > 5: self.rect.top -=5
+			if self.rect.top > self.speed: 
+				self.rect.top -= self.speed
 		if 'd' in bewegung:
-			if self.rect.bottom < KugelQuest.SCREEN_HEIGHT - 5: self.rect.top +=5	
+			if self.rect.bottom < KugelQuest.SCREEN_HEIGHT - self.speed: 
+				self.rect.top += self.speed	
