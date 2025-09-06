@@ -15,8 +15,9 @@ SCREEN_HEIGHT:int = 900 # Höhe des Spiel Fensters
 
 if __name__ == "__main__":
     logging.basicConfig(
-        # filename=f"{GAME_DIR}KugelQuest.log", filemode='w',
-        format='%(asctime)s %(levelname)s: %(message)s', datefmt='%d.%m.%Y %H:%M:%S', level=logging.DEBUG)
+        # filename=os.path.join(GAME_DIR, "KugelQuest.log"), filemode='w',
+        format='%(asctime)s %(levelname)s: %(message)s', datefmt='%d.%m.%Y %H:%M:%S', level=logging.DEBUG
+        )
     logging.debug("Start!")
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_icon(pygame.image.load(f"{DATA_DIR}Kugel.png"))

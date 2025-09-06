@@ -1,5 +1,6 @@
 import pygame
 import KugelQuest
+import sprites
 class Kugel(pygame.sprite.Sprite):
 	def __init__(self):
 		#Definition aller Sprites der Kugel
@@ -51,15 +52,20 @@ class Kugel(pygame.sprite.Sprite):
 			elif keys[pygame.K_DOWN] and not keys[pygame.K_UP]:
 				bewegung = "d"
 		self.image = eval(f"self.image_{bewegung}")
+		current_speed = self.speed if len(bewegung) == 1 else self.speed - 2
 		if 'l' in bewegung:
-			if self.rect.left > self.speed: 
-				self.rect.left -= self.speed
+			if self.rect.left > current_speed: 
+				self.rect.left -= current_speed
+				if not sprites.bewegung_erlaubt(self.rect): self.rect.left += current_speed
 		if 'r' in bewegung:
-			if self.rect.right < KugelQuest.SCREEN_WIDTH - self.speed: 
-				self.rect.left += self.speed
+			if self.rect.right < KugelQuest.SCREEN_WIDTH - current_speed: 
+				self.rect.left += current_speed
+				if not sprites.bewegung_erlaubt(self.rect): self.rect.left -= current_speed
 		if 'u' in bewegung:
-			if self.rect.top > self.speed: 
-				self.rect.top -= self.speed
+			if self.rect.top > current_speed: 
+				self.rect.top -= current_speed
+				if not sprites.bewegung_erlaubt(self.rect): self.rect.top += current_speed
 		if 'd' in bewegung:
-			if self.rect.bottom < KugelQuest.SCREEN_HEIGHT - self.speed: 
-				self.rect.top += self.speed	
+			if self.rect.bottom < KugelQuest.SCREEN_HEIGHT - current_speed: 
+				self.rect.top += current_speed
+				if not sprites.bewegung_erlaubt(self.rect): self.rect.top -= current_speed
